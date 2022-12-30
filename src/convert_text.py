@@ -20,17 +20,17 @@ def readPdf(path):
     return text
 
 
-def img_text(path):
-    try:
-        url = "https://app.nanonets.com/api/v2/OCR/FullText"
-        files = [('file', ('xyz', open(path, 'rb'), 'application/pdf'))]
-        headers = {}
-        response = requests.request("POST", url, headers=headers, files=files,
-                                    auth=requests.auth.HTTPBasicAuth(API_KEY, ''))
-        print("OCR Response - ", response.status_code)
-        json_response = json.loads(response.text)
-        text = json_response["results"][0]['page_data'][0]["raw_text"]
-        return text
-    except:
-        print('Something went wrong while getting TRF from OCR.')
+# def img_text(path):
+#     try:
+#         url = "https://app.nanonets.com/api/v2/OCR/FullText"
+#         files = [('file', ('xyz', open(path, 'rb'), 'application/pdf'))]
+#         headers = {}
+#         response = requests.request("POST", url, headers=headers, files=files,
+#                                     auth=requests.auth.HTTPBasicAuth(API_KEY, ''))
+#         print("OCR Response - ", response.status_code)
+#         json_response = json.loads(response.text)
+#         text = json_response["results"][0]['page_data'][0]["raw_text"]
+#         return text
+#     except:
+#         print('Something went wrong while getting TRF from OCR.')
 
