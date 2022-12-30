@@ -4,7 +4,7 @@ from decouple import config
 import PyPDF2
 
 
-API_KEY = config('API_KEY')
+# API_KEY = config('API_KEY')
 
 def readPdf(path):
     reader = PyPDF2.PdfReader(path)
