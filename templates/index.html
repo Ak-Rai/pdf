@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SOP Plagiarism</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='scripts/utils.js')}}"></script>
+  <style>
+
+     .jumbotron {
+      margin-bottom: 0;
+    }
+    input{
+        display: none;
+    }
+    label{
+        cursor: pointer;
+    }
+
+    input[type=file]::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #E8252A;
+        padding: 3px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+
+    input[type=file]::file-selector-button:hover {
+        background: #0d45a5;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+  </style>
+</head>
+    <body>
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>Check SOP Plagiarism</h1>
+            </div>
+            <div class="container text-center">
+                <br>
+                <form id="fileForm" action="/upload" method="post" enctype="multipart/form-data"><br><br>
+                    <input type=file name=file[] id="fileId" multiple="" class="form-control" placeholder="Upload IELTS Documents" accept=".pdf, image/*, application/msword, .docx>
+                    <p style = "font-size:15px; color: #E8252A;"><small>Allowed Files - png, jpg, jpeg, pdf.</small></p><br>
+                    <button type=submit class="btn btn-success">Upload</button>
+                </form><br><br>
+                <div id="process" style="display:none;">
+                    <div class="spinner">
+                        <img src="{{url_for('static', filename='images/loading.gif')}}"  align="center" style="width:40px;height:40px"; />
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="container">
+            <div id="targetLayer" style="display:none;"></div>
+        </div><br><br>
+    </body>
+</html>
